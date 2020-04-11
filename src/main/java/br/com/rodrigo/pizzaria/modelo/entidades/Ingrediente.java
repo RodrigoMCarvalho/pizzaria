@@ -19,10 +19,10 @@ public class Ingrediente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty
+	@NotEmpty(message="Nome obrigatório.")
 	private String nome;
 	
-	@NotNull
+	@NotNull(message="Categoria obrigatória.")
 	@Enumerated(EnumType.STRING)
 	private CategoriaDeIngrediente categoria;
 

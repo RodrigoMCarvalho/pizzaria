@@ -17,30 +17,32 @@
 		</style>
 </head>
 <body>
-	<section>
-		<table class="table table-hover table-condensed table-striped table-bordered">
-			<thead>
-				<tr>
-					<td># </td>
-					<td>Nome </td>
-					<td>Categoria </td>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${ingredientes}" var="ingrediente">
-				<tr>
-					<td>${ingrediente.id}</td>
-					<td>${ingrediente.nome}</td>
-					<td>${ingrediente.categoria}</td>
-				</tr>
-				</c:forEach>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="3">Quantidade de ingredientes cadastrados: ${ingredientes.size()}</td>
-				</tr>
-			</tfoot>
-		</table>
+	<c:if test="${not empty mensagemErro}">
+		<div class="container" style="margin-top: 10px">
+			<div class="alert alert-danger">${mensagemErro}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    			<span aria-hidden="true">&times;</span>
+	  			</button>
+  			</div>
+		</div>
+	</c:if>
+	<c:if test="${not empty mensagemSucesso}">
+		<div class="container" style="margin-top: 10px">
+			<div class="alert alert-success">${mensagemSucesso}
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    			<span aria-hidden="true">&times;</span>
+	  			</button>
+  			</div>
+		</div>
+	</c:if>
+	<section class="container" style="margin-top: 10px">
+		<jsp:include page="tabela-ingredientes.jsp"/>
 	</section>
+	<jsp:include page="modal-ingredientes.jsp"/>
+	
+	<script type="text/javascript" src="${path}/static/js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="${path}/static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${path}/static/js/ingredientes.js"></script>
+	
 </body>
 </html>

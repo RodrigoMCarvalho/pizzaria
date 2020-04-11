@@ -22,13 +22,13 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty
+	@NotEmpty(message="Nome obrigatório.")
 	private String nome;
 	
-	@NotNull
+	@NotNull(message="Preço obrigatório.")
 	private Double preco;
 	
-	@NotNull
+	@NotNull(message="Categoria obrigatório.")
 	@Enumerated(EnumType.STRING)
 	private CategoriaDePizza categoria;
 	
