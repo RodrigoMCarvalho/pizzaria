@@ -35,14 +35,16 @@
   			</div>
 		</div>
 	</c:if>
-	<section class="container" style="margin-top: 10px">
+	
+	<section class="container" id="secao-ingredientes" style="margin-top: 10px">
 		<jsp:include page="tabela-ingredientes.jsp"/>
 	</section>
+	
 	<jsp:include page="modal-ingredientes.jsp"/>
 	
 	<script type="text/javascript" src="${path}/static/js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="${path}/static/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="${path}/static/js/ingredientes.js"></script>
+	<script type="text/javascript" src="${path}/static/js/ingrediente.js"></script>
 	
 </body>
 </html>
