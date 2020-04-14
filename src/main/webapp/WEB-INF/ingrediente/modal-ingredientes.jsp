@@ -16,6 +16,7 @@
 					<h4 class="modal-title">Informações do Ingrediente</h4>
 				</div>
 				<div class="modal-body">
+					<input type="hidden" id="id" name="id">
 					<label for="nome">Nome: </label>
 					<input id="nome" name="nome" class="form-control">
 					

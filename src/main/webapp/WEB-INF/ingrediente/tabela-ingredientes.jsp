@@ -6,13 +6,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
-<table class="table table-hover table-condensed table-striped table-bordered" id="tbl-ingredientes">
+<table class="table table-hover table-condensed table-striped table-bordered" id="tbl-ingredientes" style="width: 800px" >
 			<thead>
 				<tr>
-					<td># </td>
-					<td>Nome </td>
-					<td>Categoria </td>
-					<td>Ações </td>
+					<td style="width: 20px; text-align: center"># </td>
+					<td style="width: 80px; text-align: center">Nome </td>
+					<td style="width: 80px; text-align: center">Categoria </td>
+					<td style="width: 10px; text-align: center">Ações </td>
 				</tr>
 			</thead>
 			<tbody>
@@ -21,13 +21,14 @@
 					<td>${ingrediente.id}</td>
 					<td>${ingrediente.nome}</td>
 					<td>${ingrediente.categoria}</td>
-					<td><button type="button" class="btn btn-danger btn-excluir">Excluir</button></td>
+					<td style="text-align: center"><button type="button" class="btn btn-warning btn-editar">Editar</button>
+					<button style="margin-left: 10px" type="button" class="btn btn-danger btn-excluir">Excluir</button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="3">Quantidade de ingredientes cadastrados: ${ingredientes.size()}</td>
+					<td colspan="3">Quantidade de ingredientes cadastrados: <span id="quantidade-ingrediente">${ingredientes.size()}</span></td>
 				</tr>
 				<tr>
 					<td colspan="3">
