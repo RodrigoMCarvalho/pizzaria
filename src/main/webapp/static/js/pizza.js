@@ -9,11 +9,11 @@ $(document).ready(function(){
 var aplicatListenerBtnSalvar = function(){
 	$('#btn-salvar').on('click', function(){
 		var url = 'ingredientes';
-		var dadosIngrediente = $('#form-ingrediente').serialize();
+		var dadosIngrediente = $('#form-pizza').serialize();
 		
 		$.post(url, dadosIngrediente)
 			.done(function(pagina){
-				$('#secao-ingredientes').html(pagina)
+				$('#secao-pizzas').html(pagina)
 				aplicarListeners();
 				
 			})
@@ -22,7 +22,7 @@ var aplicatListenerBtnSalvar = function(){
 				
 			})
 			.always(function(){
-				$('#modal-ingrediente').modal('hide');
+				$('#modal-pizza').modal('hide');
 			});
 	});
 }
@@ -36,7 +36,7 @@ var limparModal = function(){
 
 
 var aplicarListeners = function(){
-	$('#modal-ingrediente').on('hide.bs.modal', limparModal);
+	$('#modal-pizza').on('hide.bs.modal', limparModal);
 	
 	$('.btn-editar').on('click', function(){
 		var id = $(this).parents('tr').data('id');
@@ -48,7 +48,7 @@ var aplicarListeners = function(){
 				$('#nome').val(ingrediente.nome);
 				$('#categoria').val(ingrediente.categoria);
 				
-				$('#modal-ingrediente').modal('show');
+				$('#modal-pizza').modal('show');
 			});
 	});
 	
@@ -58,7 +58,7 @@ var aplicarListeners = function(){
 		var csrf = $('#csrf').val();
 		
 		$.ajax({
-			url : "ingredientes/"+id,
+			url : "pizzas/"+id,
 			type: 'DELETE',
 			headers: {'X-CSRF-TOKEN': csrf},
 		    success: function(result) {
