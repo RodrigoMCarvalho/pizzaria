@@ -10,7 +10,6 @@ var aplicatListenerBtnSalvar = function(){
 	$('#btn-salvar').on('click', function(){
 		var url = 'ingredientes';
 		var dadosIngrediente = $('#form-ingrediente').serialize();
-		
 		$.post(url, dadosIngrediente)
 			.done(function(pagina){
 				$('#secao-ingredientes').html(pagina)

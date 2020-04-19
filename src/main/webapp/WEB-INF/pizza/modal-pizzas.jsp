@@ -23,12 +23,12 @@
 					<label for="preco">Preço: </label>
 					<input id="preco" name="preco" class="form-control">
 					
-					<label for="ingrediente">Ingrediente: </label>
+					<!--  <label for="ingrediente">Ingrediente: </label>
 					<select id="ingrediente" name="ingrediente" class="form-control">
 						<c:forEach items="${ingredientes}" var="ingrediente">
 							<option value="${ingredientes}">${ingredientes}</option>
 						</c:forEach>
-					</select>
+					</select> -->
 					
 					<label for="categoria">Categoria: </label>
 					<select id="categoria" name="categoria" class="form-control">

@@ -8,9 +8,8 @@ $(document).ready(function(){
 
 var aplicatListenerBtnSalvar = function(){
 	$('#btn-salvar').on('click', function(){
-		var url = 'ingredientes';
+		var url = 'pizzas';
 		var dadosIngrediente = $('#form-pizza').serialize();
-		
 		$.post(url, dadosIngrediente)
 			.done(function(pagina){
 				$('#secao-pizzas').html(pagina)
