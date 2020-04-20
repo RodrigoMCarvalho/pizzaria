@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.rodrigo.pizzaria.excecoes.PizzaInvalidoException;
+import br.com.rodrigo.pizzaria.modelo.entidades.Ingrediente;
 import br.com.rodrigo.pizzaria.modelo.entidades.Pizza;
 import br.com.rodrigo.pizzaria.modelo.enumeracoes.CategoriaDePizza;
+import br.com.rodrigo.pizzaria.modelo.repositorios.IngredienteRepositorio;
 import br.com.rodrigo.pizzaria.modelo.repositorios.PizzaRepositorio;
+import br.com.rodrigo.pizzaria.propertyeditors.IngredientePropertyEditor;
 
 @Controller
 @RequestMapping("/pizzas")
@@ -23,6 +28,12 @@ public class PizzariaController {
 	
 	@Autowired
 	private PizzaRepositorio pizzaRepositorio;
+	
+	@Autowired
+	private IngredienteRepositorio ingredienteRepositorio;
+	
+	@Autowired
+	private IngredientePropertyEditor ingredientePropertyEditor;
 	
 	@RequestMapping("/ola/{nome}")
 	@ResponseBody
@@ -34,6 +45,7 @@ public class PizzariaController {
 	public String listarPizzas(Model model) {
 		model.addAttribute("titulo", "Listagem de pizzas");
 		model.addAttribute("pizzas", pizzaRepositorio.findAll());
+		model.addAttribute("ingredientes", ingredienteRepositorio.findAll());
 		model.addAttribute("categorias", CategoriaDePizza.values());
 		return "pizza/listagem";
 	}
@@ -50,7 +62,10 @@ public class PizzariaController {
 		return "pizza/tabela-pizzas";
 	}
 	
-	
+	@InitBinder
+	public void initBinder(WebDataBinder webDataBinder) {
+		webDataBinder.registerCustomEditor(Ingrediente.class, ingredientePropertyEditor);
+	}
 	
 	
 	

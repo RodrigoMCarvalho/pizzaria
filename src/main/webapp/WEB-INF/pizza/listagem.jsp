@@ -17,24 +17,6 @@
 		</style>
 </head>
 <body>
-	<c:if test="${not empty mensagemErro}">
-		<div class="container" style="margin-top: 10px">
-			<div class="alert alert-danger">${mensagemErro}
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-	    			<span aria-hidden="true">&times;</span>
-	  			</button>
-  			</div>
-		</div>
-	</c:if>
-	<c:if test="${not empty mensagemSucesso}">
-		<div class="container" style="margin-top: 10px">
-			<div class="alert alert-success">${mensagemSucesso}
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-	    			<span aria-hidden="true">&times;</span>
-	  			</button>
-  			</div>
-		</div>
-	</c:if>
 	
 	<section class="container" id="secao-pizzas" style="margin-top: 10px">
 		<jsp:include page="tabela-pizzas.jsp"/>

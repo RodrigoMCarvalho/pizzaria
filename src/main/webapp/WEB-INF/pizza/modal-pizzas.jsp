@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<div class="modal fade" id="modal-pizzas" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modal-pizza" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form id="form-pizza" method="post"	>
@@ -23,12 +23,12 @@
 					<label for="preco">Preço: </label>
 					<input id="preco" name="preco" class="form-control">
 					
-					<!--  <label for="ingrediente">Ingrediente: </label>
-					<select id="ingrediente" name="ingrediente" class="form-control">
+					<label for="ingredientes">Ingrediente: </label>
+					<select id="ingredientes" name="ingredientes" class="form-control" multiple="multiple">
 						<c:forEach items="${ingredientes}" var="ingrediente">
-							<option value="${ingredientes}">${ingredientes}</option>
+							<option value="${ingrediente.id}">${ingrediente.nome}</option>
 						</c:forEach>
-					</select> -->
+					</select>
 					
 					<label for="categoria">Categoria: </label>
 					<select id="categoria" name="categoria" class="form-control">

@@ -14,11 +14,9 @@ var aplicatListenerBtnSalvar = function(){
 			.done(function(pagina){
 				$('#secao-pizzas').html(pagina)
 				aplicarListeners();
-				
 			})
 			.fail(function(){
 				alert('Erro ao salvar!');
-				
 			})
 			.always(function(){
 				$('#modal-pizza').modal('hide');
@@ -31,6 +29,7 @@ var limparModal = function(){
 	$('#id').val('');
 	$('#nome').val('');
 	$('#categoria').val('');
+	$('#ingrediente').val('');
 };
 
 
