@@ -41,7 +41,7 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="3">Quantidade de Pizzas cadastrados: <span id="quantidade-ingrediente">${pizzas.size()}</span></td>
+			<td colspan="3">Quantidade de Pizzas cadastrados: <span id="quantidade-pizzas">${pizzas.size()}</span></td>
 		</tr>
 		<tr>
 			<td colspan="3">

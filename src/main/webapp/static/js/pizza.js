@@ -38,13 +38,19 @@ var aplicarListeners = function(){
 	
 	$('.btn-editar').on('click', function(){
 		var id = $(this).parents('tr').data('id');
-		var url = 'ingredientes/'+id;
+		var url = 'pizzas/'+id;
 		
 		$.get(url)
-			.success(function(ingrediente){
-				$('#id').val(ingrediente.id);
-				$('#nome').val(ingrediente.nome);
-				$('#categoria').val(ingrediente.categoria);
+			.success(function(pizza){
+				$('#id').val(pizza.id);
+				$('#nome').val(pizza.nome);
+				$('#preco').val(pizza.preco);
+				$('#categoria').val(pizza.categoria);
+				
+				pizza.ingredientes.forEach(function(ingrediente) {
+					var id = ingrediente.id;
+					$('#ingredientes option[value='+ id +']').attr('selected', false);
+				});
 				
 				$('#modal-pizza').modal('show');
 			});
@@ -61,8 +67,8 @@ var aplicarListeners = function(){
 			headers: {'X-CSRF-TOKEN': csrf},
 		    success: function(result) {
 		    	$('tr[data-id="'+id+'"]').remove();
-				var ingredientes = parseInt( $('#quantidade-ingredientes').text() );
-		    	$('#quantidade-ingredientes').text(ingredientes - 1);
+		    	var pizzas = parseInt( $('#quantidade-pizzas').text() );
+		    	$('#quantidade-pizzas').text(pizzas - 1);
 		    }
 		});
 		
