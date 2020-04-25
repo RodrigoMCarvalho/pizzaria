@@ -28,8 +28,9 @@ var aplicatListenerBtnSalvar = function(){
 var limparModal = function(){
 	$('#id').val('');
 	$('#nome').val('');
+	$('#preco').val('');
 	$('#categoria').val('');
-	$('#ingrediente').val('');
+	$('#ingredientes option').attr('selected', false);
 };
 
 
@@ -49,7 +50,7 @@ var aplicarListeners = function(){
 				
 				pizza.ingredientes.forEach(function(ingrediente) {
 					var id = ingrediente.id;
-					$('#ingredientes option[value='+ id +']').attr('selected', false);
+					$('#ingredientes option[value='+ id +']').attr('selected', true);
 				});
 				
 				$('#modal-pizza').modal('show');
