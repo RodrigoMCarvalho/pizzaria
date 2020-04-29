@@ -8,27 +8,52 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${titulo}</title>
+<title>Pizzaria - Login</title>
 
 	<c:set var="path" value="${pageContext.request.contextPath}" scope="request"/>
 		<style type="text/css">
 			@IMPORT url("${path}/static/bootstrap/css/bootstrap.min.css");
 			@IMPORT url("${path}/static/bootstrap/css/bootstrap-theme.min.css");
+			#login{
+				width: 400px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 100px;
+				border: 2px solid blue;
+			}
+			#btn-login{
+				width: 100%;
+			}
 		</style>
 </head>
 <body>
 
-	<jsp:include page="../menu.jsp"></jsp:include>
-	
-	<section class="container" id="secao-pizzas" style="margin-top: 10px">
-		<jsp:include page="tabela-pizzas.jsp"/>
+	<section id="login" class="panel pane-primary">
+		<form action="${path}/autenticar" method="post">
+			<div class="panel-heading">
+				Pizzaria - Login
+			</div>
+			<div class="panel-body">
+				<label for="usuario"></label>
+				<input id="usuario" name="usuario" class="form-control">
+				
+				<label for="senha"></label>
+				<input type="password" id="senha" name="senha" class="form-control">
+				<div class="panel-footer">
+				<button id="btn-login" class="btn btn-primary">Entrar</button>
+				</div>
+			</div>
+			<input type="hidden" id="_csrf" name="_csrf" value="${_csrf.token}">
+		</form>
 	</section>
-	
-	<jsp:include page="modal-pizzas.jsp"/>
+
+
+
+
+
+
 	
 	<script type="text/javascript" src="${path}/static/js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="${path}/static/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="${path}/static/js/pizza.js"></script>
-	
 </body>
 </html>
