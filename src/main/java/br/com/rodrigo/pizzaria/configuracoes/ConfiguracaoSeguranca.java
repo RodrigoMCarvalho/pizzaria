@@ -28,13 +28,14 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter{
 				.loginPage("/login.jsp")
 				.loginProcessingUrl("/autenticar")
 				.defaultSuccessUrl("/pizzas")
-				.failureUrl("/login?semacesso=true")
+				.failureUrl("/login.jsp?semacesso=true")
 				.usernameParameter("usuario")
 				.passwordParameter("senha")
 			.and()
 				.logout()
 					.logoutUrl("/sair")
-					.logoutSuccessUrl("/login?saiu=true");
+					.logoutSuccessUrl("/login.jsp?saiu=true");
+		
 	}
 	
 }

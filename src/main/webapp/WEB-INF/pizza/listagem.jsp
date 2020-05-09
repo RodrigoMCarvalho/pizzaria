@@ -17,18 +17,18 @@
 		</style>
 </head>
 <body>
-
-	<jsp:include page="../menu.jsp"></jsp:include>
-	
-	<section class="container" id="secao-pizzas" style="margin-top: 10px">
-		<jsp:include page="tabela-pizzas.jsp"/>
-	</section>
-	
-	<jsp:include page="modal-pizzas.jsp"/>
-	
-	<script type="text/javascript" src="${path}/static/js/jquery-2.1.3.min.js"></script>
-	<script type="text/javascript" src="${path}/static/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="${path}/static/js/pizza.js"></script>
-	
+	<div class="container">
+		<jsp:include page="../menu.jsp"></jsp:include>
+		
+		<section class="container" id="secao-pizzas" style="margin-top: 10px">
+			<jsp:include page="tabela-pizzas.jsp"/>
+		</section>
+		
+		<jsp:include page="modal-pizzas.jsp"/>
+		
+		<script type="text/javascript" src="${path}/static/js/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="${path}/static/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${path}/static/js/pizza.js"></script>
+	</div>
 </body>
 </html>

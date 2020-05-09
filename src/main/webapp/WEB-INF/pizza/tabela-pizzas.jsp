@@ -48,7 +48,6 @@
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-pizza">
 						Cadastrar pizza
 				</button>
-				<a class="btn btn-primary"  href="ingredientes">Ingredientes</a>
 			</td>
 		</tr>
 	</tfoot>

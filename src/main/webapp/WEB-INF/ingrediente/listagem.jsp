@@ -17,6 +17,8 @@
 		</style>
 </head>
 <body>
+<div class="container">
+	<jsp:include page="../menu.jsp"></jsp:include>
 	<c:if test="${not empty mensagemErro}">
 		<div class="container" style="margin-top: 10px">
 			<div class="alert alert-danger">${mensagemErro}
@@ -45,6 +47,6 @@
 	<script type="text/javascript" src="${path}/static/js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="${path}/static/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${path}/static/js/ingrediente.js"></script>
-	
+</div>	
 </body>
 </html>
