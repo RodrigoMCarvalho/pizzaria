@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${titulo}</title>
+<title><spring:message code="views.pizza.titulo"/></title>
 
 	<c:set var="path" value="${pageContext.request.contextPath}" scope="request"/>
 		<style type="text/css">

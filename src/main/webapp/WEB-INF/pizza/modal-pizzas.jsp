@@ -36,6 +36,7 @@
 							<option value="${categoria}">${categoria}</option>
 						</c:forEach>
 					</select>
+					<input type="hidden" id="csrf" name="_csrf" value="${_csrf.token}">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

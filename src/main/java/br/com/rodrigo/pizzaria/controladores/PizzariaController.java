@@ -45,7 +45,6 @@ public class PizzariaController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String listarPizzas(Model model) {
-		model.addAttribute("titulo", "Listagem de pizzas");
 		model.addAttribute("pizzas", pizzaRepositorio.findAll());
 		model.addAttribute("ingredientes", ingredienteRepositorio.findAll());
 		model.addAttribute("categorias", CategoriaDePizza.values());
