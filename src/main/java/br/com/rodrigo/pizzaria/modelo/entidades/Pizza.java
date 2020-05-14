@@ -8,63 +8,90 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.rodrigo.pizzaria.modelo.enumeracoes.CategoriaDePizza;
 
 @Entity
 public class Pizza {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotEmpty(message="Nome obrigatório.")
+
+	@NotEmpty(message = "Nome obrigatório.")
 	private String nome;
-	
-	@NotNull(message="Preço obrigatório.")
+
+	@NotNull(message = "Preço obrigatório.")
 	private Double preco;
-	
-	@NotNull(message="Categoria obrigatório.")
+
+	@NotNull(message = "Categoria obrigatório.")
 	@Enumerated(EnumType.STRING)
 	private CategoriaDePizza categoria;
-	
-	@ManyToMany    //unidirecional
+
+	@ManyToMany // unidirecional
 	private Set<Ingrediente> ingredientes;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "DONO")
+	@JsonIgnore
+	private Pizzaria dono;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public Double getPreco() {
 		return preco;
 	}
+
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
+
 	public CategoriaDePizza getCategoria() {
 		return categoria;
 	}
+
 	public void setCategoria(CategoriaDePizza categoria) {
 		this.categoria = categoria;
 	}
+
 	public Set<Ingrediente> getIngredientes() {
 		return ingredientes;
 	}
+
 	public void setIngredientes(Set<Ingrediente> ingredientes) {
 		this.ingredientes = ingredientes;
 	}
+
+	public Pizzaria getDono() {
+		return dono;
+	}
+
+	public void setDono(Pizzaria dono) {
+		this.dono = dono;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -74,6 +101,7 @@ public class Pizza {
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -98,5 +126,4 @@ public class Pizza {
 		return true;
 	}
 
-	
 }
