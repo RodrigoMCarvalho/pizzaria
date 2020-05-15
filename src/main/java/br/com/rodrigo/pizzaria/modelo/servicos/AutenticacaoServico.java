@@ -16,7 +16,7 @@ public class AutenticacaoServico implements UserDetailsService{
 
 	@Override
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-		return null;
+		return pizzariaRepositorio.findOneByLogin(login);
 	}
 
 }

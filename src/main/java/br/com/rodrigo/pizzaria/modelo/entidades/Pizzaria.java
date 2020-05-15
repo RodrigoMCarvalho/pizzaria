@@ -29,18 +29,22 @@ public class Pizzaria implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@NotEmpty
 	private String login;
-	
+
+	@NotEmpty
 	private String senha;
 
 	@NotNull
 	private Calendar dataCadastro;
 
-	@NotNull @NotEmpty
+	@NotNull
+	@NotEmpty
 	private String nome;
 
-	@NotNull @NotEmpty
+	@NotNull
+	@NotEmpty
 	private String endereco;
 
 	@ElementCollection
@@ -111,21 +115,43 @@ public class Pizzaria implements UserDetails {
 		this.telefones = telefones;
 	}
 
+	public Set<Pizza> getPizzas() {
+		return pizzas;
+	}
+
+	public void setPizzas(Set<Pizza> pizzas) {
+		this.pizzas = pizzas;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> autorizacoes = new ArrayList<GrantedAuthority>();
 
 		for (Permissao permissao : getPermissoes()) {
 			autorizacoes.add(new SimpleGrantedAuthority(permissao.getNome()));
-
 		}
-
 		return autorizacoes;
 	}
 
 	@Override
 	public String getPassword() {
-		return null;
+		return this.senha;
 	}
 
 	@Override
@@ -152,31 +178,5 @@ public class Pizzaria implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-
-	public Set<Pizza> getPizzas() {
-		return pizzas;
-	}
-
-	public void setPizzas(Set<Pizza> pizzas) {
-		this.pizzas = pizzas;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	
 
 }
