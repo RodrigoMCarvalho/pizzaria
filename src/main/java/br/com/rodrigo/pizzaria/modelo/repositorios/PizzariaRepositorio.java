@@ -8,5 +8,6 @@ import br.com.rodrigo.pizzaria.modelo.entidades.Pizzaria;
 @Repository
 public interface PizzariaRepositorio extends CrudRepository<Pizzaria, Long	>{
 
+	Pizzaria findOneByLogin(String username);
 
 }

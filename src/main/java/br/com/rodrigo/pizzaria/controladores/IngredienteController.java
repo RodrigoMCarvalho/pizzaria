@@ -17,19 +17,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import br.com.rodrigo.pizzaria.excecoes.IngredienteInvalidoException;
 import br.com.rodrigo.pizzaria.modelo.entidades.Ingrediente;
 import br.com.rodrigo.pizzaria.modelo.enumeracoes.CategoriaDeIngrediente;
-import br.com.rodrigo.pizzaria.modelo.repositorios.IngredienteRepositorio;
+import br.com.rodrigo.pizzaria.modelo.servicos.IngredienteServico;
 
 @Controller
 @RequestMapping("/ingredientes")
 public class IngredienteController {
 	
 	@Autowired
-	IngredienteRepositorio ingredienteRepositorio;
+	private IngredienteServico ingredienteServico;
 
 	@RequestMapping(method = RequestMethod.GET)
 	private String listarIngredientes(Model model) {
 		model.addAttribute("titulo", "Listagem de ingredientes");
-		model.addAttribute("ingredientes", ingredienteRepositorio.findAll());
+		model.addAttribute("ingredientes", ingredienteServico.listar());
 		model.addAttribute("categorias", CategoriaDeIngrediente.values());
 		return "ingrediente/listagem";
 	}
@@ -45,9 +45,9 @@ public class IngredienteController {
 			//attr.addFlashAttribute("mensagemErro", "Erro para salvar: " + error.getDefaultMessage());
 			throw new IngredienteInvalidoException();
 		} else {
-			ingredienteRepositorio.save(ingrediente);
+			ingredienteServico.salvar(ingrediente);
 			//attr.addFlashAttribute("mensagemSucesso", "Ingrediente salvo com sucesso.");
-			model.addAttribute("ingredientes", ingredienteRepositorio.findAll());
+			model.addAttribute("ingredientes", ingredienteServico.listar());
 			model.addAttribute("categorias", CategoriaDeIngrediente.values());
 		}
 		return "ingrediente/tabela-ingredientes";
@@ -56,7 +56,7 @@ public class IngredienteController {
 	@RequestMapping(method = RequestMethod.DELETE, value="{id}") 
 	public ResponseEntity<String> deletarIngrediente(@PathVariable Long id) {
 		try {
-			ingredienteRepositorio.delete(id);
+			ingredienteServico.remover(id);
 			return new ResponseEntity<String>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
@@ -64,8 +64,8 @@ public class IngredienteController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value="{id}") 
-	public @ResponseBody Ingrediente buscaInggrediente(@PathVariable Long id) {
-		return ingredienteRepositorio.findOne(id);
+	public @ResponseBody Ingrediente buscaIngrediente(@PathVariable Long id) {
+		return ingredienteServico.buscar(id);
 	}
 	
 }

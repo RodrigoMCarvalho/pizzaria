@@ -55,6 +55,14 @@ public class Ingrediente {
 	public void setCategoria(CategoriaDeIngrediente categoria) {
 		this.categoria = categoria;
 	}
+	
+	public Pizzaria getDono() {
+		return dono;
+	}
+
+	public void setDono(Pizzaria dono) {
+		this.dono = dono;
+	}
 
 	@Override
 	public int hashCode() {

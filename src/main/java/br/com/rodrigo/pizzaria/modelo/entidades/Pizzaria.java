@@ -29,6 +29,10 @@ public class Pizzaria implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	private String login;
+	
+	private String senha;
 
 	@NotNull
 	private Calendar dataCadastro;
@@ -126,7 +130,7 @@ public class Pizzaria implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return null;
+		return this.nome;
 	}
 
 	@Override
@@ -155,6 +159,22 @@ public class Pizzaria implements UserDetails {
 
 	public void setPizzas(Set<Pizza> pizzas) {
 		this.pizzas = pizzas;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	
