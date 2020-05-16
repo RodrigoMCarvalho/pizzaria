@@ -35,7 +35,7 @@ public class IngredienteServico {
 	}
 	
 	public void remover(Long id) {
-		Ingrediente ingrediente = buscar(id);
+		Ingrediente ingrediente = this.buscar(id);
 		if(ingrediente != null) {
 			ingredienteRepositorio.delete(id);
 		}

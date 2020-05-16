@@ -20,8 +20,8 @@ import br.com.rodrigo.pizzaria.excecoes.PizzaInvalidoException;
 import br.com.rodrigo.pizzaria.modelo.entidades.Ingrediente;
 import br.com.rodrigo.pizzaria.modelo.entidades.Pizza;
 import br.com.rodrigo.pizzaria.modelo.enumeracoes.CategoriaDePizza;
-import br.com.rodrigo.pizzaria.modelo.repositorios.IngredienteRepositorio;
-import br.com.rodrigo.pizzaria.modelo.repositorios.PizzaRepositorio;
+import br.com.rodrigo.pizzaria.modelo.servicos.IngredienteServico;
+import br.com.rodrigo.pizzaria.modelo.servicos.PizzaServico;
 import br.com.rodrigo.pizzaria.propertyeditors.IngredientePropertyEditor;
 
 @Controller
@@ -29,10 +29,10 @@ import br.com.rodrigo.pizzaria.propertyeditors.IngredientePropertyEditor;
 public class PizzariaController {
 	
 	@Autowired
-	private PizzaRepositorio pizzaRepositorio;
+	private PizzaServico pizzaServico;
 	
 	@Autowired
-	private IngredienteRepositorio ingredienteRepositorio;
+	private IngredienteServico ingredienteServico;
 	
 	@Autowired
 	private IngredientePropertyEditor ingredientePropertyEditor;
@@ -45,8 +45,8 @@ public class PizzariaController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String listarPizzas(Model model) {
-		model.addAttribute("pizzas", pizzaRepositorio.findAll());
-		model.addAttribute("ingredientes", ingredienteRepositorio.findAll());
+		model.addAttribute("pizzas", pizzaServico.listar());
+		model.addAttribute("ingredientes", ingredienteServico.listar());
 		model.addAttribute("categorias", CategoriaDePizza.values());
 		return "pizza/listagem";
 	}
@@ -56,8 +56,8 @@ public class PizzariaController {
 		if(result.hasErrors()) {
 			throw new PizzaInvalidoException();
 		} else {
-			pizzaRepositorio.save(pizza);
-			model.addAttribute("pizzas", pizzaRepositorio.findAll());
+			pizzaServico.salvar(pizza);
+			model.addAttribute("pizzas", pizzaServico.listar());
 			model.addAttribute("categorias", CategoriaDePizza.values());
 		}
 		return "pizza/tabela-pizzas";
@@ -66,7 +66,7 @@ public class PizzariaController {
 	@RequestMapping(method = RequestMethod.DELETE, value="{id}") 
 	public ResponseEntity<String> deletarPizza(@PathVariable Long id) {
 		try {
-			pizzaRepositorio.delete(id);
+			pizzaServico.remover(id);
 			return new ResponseEntity<String>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
@@ -75,7 +75,7 @@ public class PizzariaController {
 	
 	@RequestMapping(method = RequestMethod.GET, value="{id}") 
 	public @ResponseBody Pizza buscaPizza(@PathVariable Long id) {
-		return pizzaRepositorio.findOne(id);
+		return pizzaServico.buscar(id);
 	}
 	
 
