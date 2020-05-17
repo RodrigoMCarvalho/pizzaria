@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <div class="modal fade" id="modal-pizza" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
@@ -41,7 +42,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 					<button id="btn-salvar" type="button" class="btn btn-primary">Salvar</button>
-				</div>
+				</div>		
 			</form>
 		</div>
 	</div>

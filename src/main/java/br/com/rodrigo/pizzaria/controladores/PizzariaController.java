@@ -78,7 +78,6 @@ public class PizzariaController {
 		return pizzaServico.buscar(id);
 	}
 	
-
 	@InitBinder
 	public void initBinder(WebDataBinder webDataBinder) {
 		webDataBinder.registerCustomEditor(Ingrediente.class, ingredientePropertyEditor);

@@ -23,9 +23,9 @@ import br.com.rodrigo.pizzaria.modelo.enumeracoes.CategoriaDePizza;
 public class Pizza {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	@NotEmpty
 	private String nome;
@@ -41,11 +41,10 @@ public class Pizza {
 	private Set<Ingrediente> ingredientes;
 
 	@ManyToOne
-	@JoinColumn(name="DONO")
+	@JoinColumn(name = "dono")
 	@JsonIgnore
 	private Pizzaria dono;
-	
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -85,6 +84,15 @@ public class Pizza {
 	public void setIngredientes(Set<Ingrediente> ingredientes) {
 		this.ingredientes = ingredientes;
 	}
+
+	public Pizzaria getDono() {
+		return dono;
+	}
+
+	public void setDono(Pizzaria dono) {
+		this.dono = dono;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -119,11 +127,12 @@ public class Pizza {
 		return true;
 	}
 
-	public Pizzaria getDono() {
-		return dono;
+	@Override
+	public String toString() {
+		return "Pizza [id=" + id + ", nome=" + nome + ", preco=" + preco + ", categoria=" + categoria
+				+ ", ingredientes=" + ingredientes + ", dono=" + dono + "]";
 	}
+	
+	
 
-	public void setDono(Pizzaria dono) {
-		this.dono = dono;
-	}
 }

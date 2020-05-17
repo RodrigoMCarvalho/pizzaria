@@ -57,7 +57,7 @@ public class Pizzaria implements UserDetails {
 	private Set<Permissao> permissoes;
 
 	@OneToMany(mappedBy = "dono")
-	private Set<Pizza> pizzas;
+	private List<Pizza> pizzas = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -115,11 +115,11 @@ public class Pizzaria implements UserDetails {
 		this.telefones = telefones;
 	}
 
-	public Set<Pizza> getPizzas() {
+	public List<Pizza> getPizzas() {
 		return pizzas;
 	}
 
-	public void setPizzas(Set<Pizza> pizzas) {
+	public void setPizzas(List<Pizza> pizzas) {
 		this.pizzas = pizzas;
 	}
 
@@ -156,7 +156,7 @@ public class Pizzaria implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return this.nome;
+		return this.login;
 	}
 
 	@Override
