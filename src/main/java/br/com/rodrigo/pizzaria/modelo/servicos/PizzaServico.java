@@ -1,5 +1,8 @@
 package br.com.rodrigo.pizzaria.modelo.servicos;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +45,13 @@ public class PizzaServico {
 
 	}
 
+	public List<String> listarNomesPizza() {
+		List<Pizza> pizzas = pizzaRepositorio.findAll();
+		List<String> nomesPizza = pizzas.stream()
+			.map(p -> p.getNome())
+			.sorted()
+			.collect(Collectors.toList());
+		return nomesPizza;
+	}
+		
 }

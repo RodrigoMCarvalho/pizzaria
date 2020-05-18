@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div class="container">
-		<jsp:include page="../menu.jsp"></jsp:include>
+		<jsp:include page="../menu-pizzaria.jsp"></jsp:include>
 		
 		<section class="container" id="secao-pizzas" style="margin-top: 10px">
 			<jsp:include page="tabela-pizzas.jsp"/>
